@@ -1,6 +1,26 @@
-"__pycache__/" 
-"*.pyc" 
-".env" 
-".venv/" 
-"*.log" 
-data_lake/raw/jobs_linkedin.csv
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated data
+data_lake/raw/*
+!data_lake/raw/.gitkeep
+
+# Generated warehouse files
+warehouse/output/*
+!warehouse/output/.gitkeep
