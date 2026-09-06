@@ -1,29 +1,37 @@
+<div align="center">
+
 # Job Intelligent
 
-**Job-market intelligence pipeline and analytics dashboard.**
+### Job-market data engineering & analytics pipeline
 
-Job Intelligent collects and structures job-market data, transforms it into an analytics-ready warehouse, and exposes hiring trends through an interactive Streamlit dashboard. The project focuses on data engineering, dimensional modelling, market analysis, and clear visualization rather than making unsupported hiring predictions.
+**Ingestion · data lake · dimensional warehouse · skills analytics · Streamlit dashboard**
+
+![Python](https://img.shields.io/badge/Python-Data%20Engineering-3776AB?logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Transformations-150458?logo=pandas&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Analytics-FF4B4B?logo=streamlit&logoColor=white)
+
+</div>
+
+Job Intelligent collects and structures job-market data, transforms it into an analytics-ready dimensional model and exposes hiring trends through an interactive Streamlit dashboard.
+
+The project focuses on **data engineering, dimensional modelling and transparent descriptive analytics** rather than unsupported hiring predictions.
 
 ## Architecture
 
-![Job Intelligent architecture](docs/architecture.svg)
-
-The pipeline is intentionally separated into ingestion, storage, transformation, and presentation layers so each stage can be inspected or extended independently.
+![Job Intelligent architecture](docs/architecture-modern.svg)
 
 ## What the project does
 
 - organizes job data from configured sources;
 - stages collected records in a data-lake structure;
 - transforms data into a dimensional warehouse;
-- models jobs, companies, locations, and skills separately;
+- models jobs, companies, locations and skills separately;
 - links jobs to extracted skills through a bridge table;
-- provides filters for title, location, employment type, and skill;
-- visualizes the most requested skills and strongest hiring locations;
-- exposes headline metrics for jobs, companies, locations, and detected skills.
+- supports filters for title, location, employment type and skill;
+- visualizes requested skills and hiring locations;
+- exposes headline metrics for jobs, companies, locations and skills.
 
 ## Analytics model
-
-The dashboard reads the warehouse outputs:
 
 ```text
 fact_jobs.csv
@@ -32,27 +40,34 @@ fact_jobs.csv
   └── bridge_job_skills.csv ──> dim_skills.csv
 ```
 
-This structure keeps descriptive entities separate from the job fact table and makes skill analysis easier to extend.
+This structure separates descriptive entities from the job fact table and keeps skills analysis extensible.
+
+## Dashboard experience
+
+- job-title search;
+- multi-select location filtering;
+- employment-type filtering;
+- skill filtering;
+- available-job count;
+- distinct-company/location counts;
+- detected-skill count;
+- most-requested-skill ranking;
+- top-location analysis.
 
 ## Technology stack
 
-- Python
-- Pandas
-- Streamlit
-- Plotly
-- Requests
-- python-dotenv
+`Python` · `Pandas` · `Streamlit` · `Plotly` · `Requests` · `python-dotenv`
 
 ## Repository structure
 
 ```text
 .
-├── dashboard/          # Streamlit analytics application
-├── ingestion/          # collection configuration and ingestion scripts
-├── data_lake/          # raw/staged data area
-├── warehouse/          # transformed fact and dimension outputs
-├── sources/            # source-specific components
-├── docs/               # project documentation and architecture diagram
+├── dashboard/          Streamlit analytics application
+├── ingestion/          source configuration + ingestion scripts
+├── data_lake/          raw / staged data area
+├── warehouse/          fact + dimension outputs
+├── sources/            source-specific adapters
+├── docs/               architecture and documentation
 ├── requirements.txt
 └── .env.example
 ```
@@ -61,52 +76,23 @@ This structure keeps descriptive entities separate from the job fact table and m
 
 ```bash
 python -m venv .venv
-```
-
-Activate the environment, then install dependencies:
-
-```bash
 pip install -r requirements.txt
-```
-
-If a source requires configuration, copy the example environment file and fill only the required local values:
-
-```bash
 cp .env.example .env
-```
-
-Run the data preparation/ingestion workflow required by the source configuration, then launch the dashboard:
-
-```bash
 streamlit run dashboard/app.py
 ```
 
-The dashboard expects the analytics-ready CSV files under `warehouse/output/`.
-
-## Dashboard capabilities
-
-The current interface supports:
-
-- job-title search;
-- multi-select location filtering;
-- employment-type filtering;
-- skill filtering;
-- available-job count;
-- distinct-company and location counts;
-- detected-skill count;
-- most-requested-skill ranking;
-- top-location analysis.
+The dashboard expects analytics-ready CSV files under `warehouse/output/`.
 
 ## Engineering focus
 
-This repository demonstrates an end-to-end analytical data flow rather than a single notebook: source data is separated from ingestion logic, warehouse outputs are explicitly modelled, and the dashboard consumes those outputs as a presentation layer.
+This repository demonstrates an **end-to-end analytical data flow rather than a single notebook**: source data is separated from ingestion logic, warehouse outputs are explicitly modelled and the dashboard consumes those outputs as a presentation layer.
 
 ## Limitations
 
-- results reflect the data currently collected by the configured sources and are not a complete census of the job market;
-- job postings can be duplicated, outdated, or incomplete depending on the upstream source;
-- skill extraction and normalization should be validated before using the project for high-stakes labour-market conclusions;
-- credentials and private API tokens must stay in local environment variables and must never be committed.
+- results reflect configured data sources, not the complete job market;
+- upstream postings may be duplicated, outdated or incomplete;
+- skill extraction/normalization should be validated before high-stakes labour-market conclusions;
+- credentials and private API tokens must remain in environment variables.
 
 ## Author
 
