@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+<title id="title">Job Intelligent architecture</title><desc id="desc">Job sources flow through ingestion and a data lake into a dimensional warehouse and Streamlit analytics dashboard.</desc>
+<defs><style>.box{fill:#f8fafc;stroke:#334155;stroke-width:2;rx:14}.t{font:600 20px Arial,sans-serif;fill:#0f172a}.s{font:15px Arial,sans-serif;fill:#475569}.a{stroke:#64748b;stroke-width:3;fill:none;marker-end:url(#m)}</style><marker id="m" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker></defs>
+<rect class="box" x="30" y="120" width="190" height="100"/><text class="t" x="125" y="158" text-anchor="middle">Job Sources</text><text class="s" x="125" y="187" text-anchor="middle">APIs / datasets</text>
+<rect class="box" x="275" y="120" width="190" height="100"/><text class="t" x="370" y="158" text-anchor="middle">Ingestion</text><text class="s" x="370" y="187" text-anchor="middle">collect + normalize</text>
+<rect class="box" x="520" y="120" width="190" height="100"/><text class="t" x="615" y="158" text-anchor="middle">Data Lake</text><text class="s" x="615" y="187" text-anchor="middle">raw / staged data</text>
+<rect class="box" x="765" y="120" width="190" height="100"/><text class="t" x="860" y="158" text-anchor="middle">Warehouse</text><text class="s" x="860" y="187" text-anchor="middle">fact + dimensions</text>
+<rect class="box" x="1010" y="120" width="160" height="100"/><text class="t" x="1090" y="158" text-anchor="middle">Dashboard</text><text class="s" x="1090" y="187" text-anchor="middle">Streamlit + Plotly</text>
+<path class="a" d="M220 170 H275"/><path class="a" d="M465 170 H520"/><path class="a" d="M710 170 H765"/><path class="a" d="M955 170 H1010"/>
+</svg>
